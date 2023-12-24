@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Таблиця даних</title>
+    <style>
+        body {font-family: Arial, sans-serif;}
+        table {width: 100%;}
+        th, td {padding: 15px; text-align: left; border-bottom: 1px solid #ddd;}
+    </style>
+</head>
+<body>
+    <h1>Таблиця даних</h1>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Пошук за іменами..">
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:60%;">Ім'я</th>
+            <th style="width:40%;">Країна</th>
+        </tr>
+        <tr>
+            <td>Альфредс Футтеркісте</td>
+            <td>Німеччина</td>
+        </tr>
+        <tr>
+            <td>Берглундс снаббкоп</td>
+            <td>Швеція</td>
+        </tr>
+        <tr>
+            <td>Айленд Трейдінг</td>
+            <td>Великобританія</td>
+        </tr>
+        <tr>
+            <td>Консолідейтед Холдінгс</td>
+            <td>США</td>
+        </tr>
+    </table>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }       
+            }
+        }
+    </script>
+</body>
+</html>
